@@ -1,61 +1,36 @@
 @import "tailwindcss";
 
-/* ============================================================
-   BESPOKE DESIGN SYSTEM — ExpTrack
-   Premium, editorial aesthetic for expiration tracking
-   ============================================================ */
-
 :root {
-  /* Backgrounds */
-  --bg-primary: #F6F2ED;       /* Textured oatmeal */
-  --bg-secondary: #EDE8E1;     /* Slightly deeper oatmeal */
-  --bg-card: #FDFCFA;          /* Near-white card surface */
-  --bg-elevated: #FFFFFF;       /* Pure white for modals/inputs */
-  
-  /* Text */
-  --text-primary: #1C1C1C;     /* Charcoal */
-  --text-secondary: #6B6560;   /* Warm gray */
-  --text-tertiary: #9B9490;    /* Muted warm gray */
-  --text-inverse: #FDFCFA;     /* Light text on dark surfaces */
-  
-  /* Urgency Colors */
-  --critical-bg: #FEF0EC;      /* Soft rose tint */
+  --bg-primary: #F6F2ED;
+  --bg-secondary: #EDE8E1;
+  --bg-card: #FDFCFA;
+  --bg-elevated: #FFFFFF;
+  --text-primary: #1C1C1C;
+  --text-secondary: #6B6560;
+  --text-tertiary: #9B9490;
+  --text-inverse: #FDFCFA;
+  --critical-bg: #FEF0EC;
   --critical-border: #E8A59C;
-  --critical-text: #9B3B2E;    /* Brick red */
+  --critical-text: #9B3B2E;
   --critical-accent: #C44536;
-  --critical-dot: #C44536;
-  
-  --warning-bg: #FBF3E8;       /* Warm terracotta tint */
+  --warning-bg: #FBF3E8;
   --warning-border: #E2C9A8;
-  --warning-text: #8B6234;     /* Burnt umber */
-  --warning-accent: #C67D4B;   /* Burnt terracotta */
-  --warning-dot: #C67D4B;
-  
-  --safe-bg: #EFF5EF;          /* Soft sage tint */
+  --warning-text: #8B6234;
+  --warning-accent: #C67D4B;
+  --safe-bg: #EFF5EF;
   --safe-border: #BDD4BD;
-  --safe-text: #3D6B3D;        /* Forest green */
-  --safe-accent: #5B8C5A;      /* Muted sage */
-  --safe-dot: #5B8C5A;
-  
-  /* Accents */
-  --accent-primary: #1C1C1C;   /* Charcoal as primary action */
-  --accent-hover: #2D2D2D;     /* Slightly lighter */
+  --safe-text: #3D6B3D;
+  --safe-accent: #5B8C5A;
+  --accent-primary: #1C1C1C;
+  --accent-hover: #2D2D2D;
   --accent-ghost: rgba(28, 28, 28, 0.06);
   --accent-ghost-hover: rgba(28, 28, 28, 0.12);
-  
-  /* Borders & Dividers */
-  --border-primary: #E3DDD6;   /* Warm light border */
-  --border-secondary: #EDE8E1; /* Subtle divider */
-  
-  /* Shadows */
+  --border-primary: #E3DDD6;
+  --border-secondary: #EDE8E1;
   --shadow-sm: 0 1px 2px rgba(28, 28, 28, 0.04);
   --shadow-md: 0 4px 12px rgba(28, 28, 28, 0.06);
   --shadow-lg: 0 8px 24px rgba(28, 28, 28, 0.08);
   --shadow-xl: 0 16px 48px rgba(28, 28, 28, 0.10);
-  
-  /* Login panel gradient */
-  --login-gradient-from: #2D2926;
-  --login-gradient-to: #1C1C1C;
 }
 
 @theme inline {
@@ -88,7 +63,6 @@
   --font-body: 'Inter', system-ui, sans-serif;
 }
 
-/* Base Styles */
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -97,42 +71,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-primary);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-primary); border-radius: 3px; }
 
-/* Focus styles */
 *:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 
-/* Custom input date icon fix */
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: opacity(0.5);
   cursor: pointer;
-}
-
-/* Smooth transitions globally */
-* {
-  transition-property: background-color, border-color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-/* Exclude motion-heavy elements from global transition */
-.no-transition,
-.no-transition * {
-  transition: none !important;
 }

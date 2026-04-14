@@ -21,7 +21,7 @@ export interface InventoryBatch {
   product_id: string;
   lot_number: string;
   quantity: number;
-  expiration_date: string; // ISO date string
+  expiration_date: string;
   created_at: string;
 }
 
@@ -33,4 +33,4 @@ export interface EnrichedBatch extends InventoryBatch {
   days_until_expiry: number;
 }
 
-export type AppView = 'login' | 'register' | 'dashboard' | 'products' | 'batches';
+export type AppView = 'login' | 'dashboard' | 'products' | 'batches';
