@@ -9,7 +9,6 @@ import LoginView from '@/components/login/LoginView';
 import DashboardView from '@/components/dashboard/DashboardView';
 import ProductCatalogView from '@/components/products/ProductCatalogView';
 import BatchTrackingView from '@/components/batches/BatchTrackingView';
-import { LogOut } from 'lucide-react';
 
 export default function Home() {
   const [view, setView] = useState<AppView>('login');
@@ -98,12 +97,9 @@ export default function Home() {
           </motion.div>
         ) : (
           <motion.div key={view} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="relative h-full">
-            <button onClick={handleLogout} className="absolute top-4 right-4 z-40 flex items-center gap-2 rounded-xl border border-[var(--border-secondary)] bg-[var(--bg-card)] px-3.5 py-2 text-xs font-medium text-[var(--text-secondary)] shadow-[var(--shadow-sm)] hover:bg-[var(--bg-elevated)] hover:text-[var(--text-primary)] hover:shadow-[var(--shadow-md)]">
-              <LogOut className="h-3.5 w-3.5" />Sign Out
-            </button>
-            {view === 'dashboard' && <DashboardView enrichedBatches={enrichedBatches} onNavigateToProducts={() => setView('products')} onNavigateToBatches={(pid) => { setSelectedProductId(pid); setView('batches'); }} />}
-            {view === 'products' && <ProductCatalogView products={products} batches={allBatches} onAddProduct={handleAddProduct} onDeleteProduct={handleDeleteProduct} onNavigateToBatches={(pid) => { setSelectedProductId(pid); setView('batches'); }} onBack={() => setView('dashboard')} />}
-            {view === 'batches' && selectedProduct && <BatchTrackingView product={selectedProduct} batches={selectedProductBatches} onAddBatches={handleAddBatches} onDeleteBatch={handleDeleteBatch} onBack={() => setView(view === 'batches' ? 'products' : 'dashboard')} />}
+            {view === 'dashboard' && <DashboardView enrichedBatches={enrichedBatches} userId={user?.id || ''} onNavigateToProducts={() => setView('products')} onNavigateToBatches={(pid) => { setSelectedProductId(pid); setView('batches'); }} onLogout={handleLogout} onDataImported={() => user && load(user.id)} />}
+            {view === 'products' && <ProductCatalogView products={products} batches={allBatches} onAddProduct={handleAddProduct} onDeleteProduct={handleDeleteProduct} onNavigateToBatches={(pid) => { setSelectedProductId(pid); setView('batches'); }} onNavigateToDashboard={() => setView('dashboard')} onLogout={handleLogout} />}
+            {view === 'batches' && selectedProduct && <BatchTrackingView product={selectedProduct} batches={selectedProductBatches} onAddBatches={handleAddBatches} onDeleteBatch={handleDeleteBatch} onNavigateToDashboard={() => setView('dashboard')} onNavigateToProducts={() => setView('products')} onLogout={handleLogout} />}
           </motion.div>
         )}
       </AnimatePresence>

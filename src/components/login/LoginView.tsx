@@ -33,109 +33,102 @@ export default function LoginView({ onLogin, onRegister, error, isLoading }: Pro
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      {/* Left Panel - Dark gradient with floating elements */}
-      <div className="relative hidden w-[48%] overflow-hidden bg-gradient-to-br from-[#2D2926] via-[#1C1C1C] to-[#2A2420] lg:flex lg:items-center lg:justify-center">
-        <div className="absolute inset-0 opacity-60">
-          <div className="absolute top-[15%] left-[10%] h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(198,125,75,0.35),transparent_70%)] blur-3xl" />
-          <div className="absolute bottom-[20%] right-[15%] h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,rgba(91,140,90,0.25),transparent_70%)] blur-3xl" />
-          <div className="absolute top-[50%] left-[40%] h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,rgba(196,69,54,0.2),transparent_70%)] blur-3xl" />
+      {/* Left Panel - Deep charcoal with organic shapes */}
+      <div className="relative hidden w-[48%] overflow-hidden bg-[#232220] lg:flex lg:items-center lg:justify-center">
+        <div className="absolute inset-0">
+          <div className="absolute top-[8%] left-[-5%] h-[320px] w-[320px] rounded-full bg-[#3A3533] blur-3xl opacity-80" />
+          <div className="absolute bottom-[12%] right-[-8%] h-[400px] w-[400px] rounded-full bg-[#2A2725] blur-3xl opacity-90" />
+          <div className="absolute top-[45%] left-[25%] h-[200px] w-[200px] rounded-full bg-[#443E3B] blur-2xl opacity-40" />
         </div>
 
         <motion.div
-          className="absolute top-[20%] right-[20%] h-20 w-20 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm"
-          animate={{ y: [0, -20, 0], scale: [1, 1.05, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-[22%] right-[22%] h-16 w-16 rounded-2xl border border-white/[0.06] bg-white/[0.02]"
+          animate={{ y: [0, -15, 0], rotate: [0, 3, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-[30%] left-[15%] h-32 w-32 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm"
-          animate={{ x: [0, 15, 0], y: [0, -12, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute bottom-[35%] left-[18%] h-24 w-24 rounded-full border border-white/[0.05] bg-white/[0.02]"
+          animate={{ y: [0, 10, 0], x: [0, 8, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         />
         <motion.div
-          className="absolute top-[60%] right-[30%] h-16 w-16 rounded-xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm rotate-12"
-          animate={{ rotate: [12, -8, 12], y: [0, -10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-[55%] right-[28%] h-12 w-12 rounded-lg border border-white/[0.06] bg-white/[0.02] rotate-12"
+          animate={{ rotate: [12, -5, 12], y: [0, -8, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
 
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="relative z-10 max-w-sm px-8">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
-                <Package className="h-5 w-5 text-white/80" strokeWidth={1.5} />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10">
+                <Package className="h-4 w-4 text-white/70" strokeWidth={1.5} />
               </div>
-              <span className="font-heading text-lg font-semibold tracking-tight text-white/90">ExpTrack</span>
+              <span className="font-heading text-base font-medium text-white/80">ExpTrack</span>
             </div>
           </motion.div>
-          <motion.h1 className="font-heading text-4xl font-bold leading-tight tracking-tight text-white/95" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.35 }}>
-            Never let a product<br />expire unnoticed.
+          <motion.h1 className="font-heading text-[2.5rem] font-semibold leading-[1.1] tracking-tight text-white/90" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}>
+            Stop throwing away<br />expired stock.
           </motion.h1>
-          <motion.p className="mt-5 text-base leading-relaxed text-white/50" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
-            Intelligent batch-level expiration tracking designed for teams who take freshness seriously.
+          <motion.p className="mt-4 text-[15px] leading-relaxed text-white/40" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}>
+            Track every batch. Get notified before it expires. Simple as that.
           </motion.p>
-          <motion.div className="mt-10 space-y-4" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65 }}>
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-[rgba(196,69,54,0.2)]">
-                <AlertTriangle className="h-3.5 w-3.5 text-[#E8A59C]" strokeWidth={2} />
+          <motion.div className="mt-10 space-y-3.5" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}>
+            <div className="flex items-center gap-3">
+              <div className="flex h-5 w-5 items-center justify-center rounded bg-[#C4513B]/20">
+                <AlertTriangle className="h-3 w-3 text-[#E8B4AC]" strokeWidth={2} />
               </div>
-              <div>
-                <p className="text-sm font-medium text-white/70">Real-time alerts</p>
-                <p className="text-xs text-white/35">Get notified before it&apos;s too late</p>
-              </div>
+              <p className="text-sm text-white/50">Browser alerts for expiring batches</p>
             </div>
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-[rgba(198,125,75,0.2)]">
-                <Clock className="h-3.5 w-3.5 text-[#E2C9A8]" strokeWidth={2} />
+            <div className="flex items-center gap-3">
+              <div className="flex h-5 w-5 items-center justify-center rounded bg-[#B8864A]/20">
+                <Clock className="h-3 w-3 text-[#E2C9A8]" strokeWidth={2} />
               </div>
-              <div>
-                <p className="text-sm font-medium text-white/70">Batch tracking</p>
-                <p className="text-xs text-white/35">Multiple lots per product, always sorted</p>
-              </div>
+              <p className="text-sm text-white/50">Multiple lots per product</p>
             </div>
           </motion.div>
         </div>
-        <motion.div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-[rgba(198,125,75,0.4)] to-transparent" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, delay: 0.8 }} />
       </div>
 
       {/* Right Panel - Auth Form */}
       <div className="flex w-full flex-col items-center justify-center bg-[var(--bg-primary)] px-6 lg:w-[52%]">
-        <div className="mb-10 flex items-center gap-2.5 lg:hidden">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent-primary)]">
+        <div className="mb-8 flex items-center gap-2 lg:hidden">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent-primary)]">
             <Package className="h-4 w-4 text-[var(--text-inverse)]" strokeWidth={1.5} />
           </div>
-          <span className="font-heading text-lg font-semibold tracking-tight text-[var(--text-primary)]">ExpTrack</span>
+          <span className="font-heading text-base font-medium text-[var(--text-primary)]">ExpTrack</span>
         </div>
 
         <AnimatePresence mode="wait">
-          <motion.div key={mode} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="w-full max-w-[380px]">
-            <h2 className="font-heading text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
-              {mode === 'login' ? 'Welcome back' : 'Create your account'}
+          <motion.div key={mode} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }} className="w-full max-w-[360px]">
+            <h2 className="font-heading text-xl font-semibold text-[var(--text-primary)]">
+              {mode === 'login' ? 'Sign in' : 'Create account'}
             </h2>
-            <p className="mt-1.5 text-sm text-[var(--text-secondary)]">
-              {mode === 'login' ? 'Sign in to manage your inventory expiration dates.' : 'Start tracking expiration dates across all your products.'}
+            <p className="mt-1 text-sm text-[var(--text-secondary)]">
+              {mode === 'login' ? 'Welcome back. Enter your credentials.' : 'Start tracking your inventory today.'}
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+            <form onSubmit={handleSubmit} className="mt-7 space-y-4">
               <AnimatePresence>
                 {mode === 'register' && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.25 }}>
-                    <label className="mb-1.5 block text-xs font-medium tracking-wide text-[var(--text-secondary)] uppercase">Full Name</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Cooper" required className="w-full rounded-xl border border-[var(--border-primary)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)]/10" />
+                  <motion.div initial={{ opacity: 0, height: 0, marginBottom: 0 }} animate={{ opacity: 1, height: 'auto', marginBottom: 16 }} exit={{ opacity: 0, height: 0, marginBottom: 0 }} transition={{ duration: 0.2 }}>
+                    <label className="mb-1.5 block text-xs font-medium text-[var(--text-secondary)]">Name</label>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" required className="w-full rounded-lg border border-[var(--border-primary)] bg-[var(--bg-elevated)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none focus:border-[var(--text-secondary)] transition-colors" />
                   </motion.div>
                 )}
               </AnimatePresence>
 
               <div>
-                <label className="mb-1.5 block text-xs font-medium tracking-wide text-[var(--text-secondary)] uppercase">Email Address</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="jane@company.com" required className="w-full rounded-xl border border-[var(--border-primary)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)]/10" />
+                <label className="mb-1.5 block text-xs font-medium text-[var(--text-secondary)]">Email</label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" required className="w-full rounded-lg border border-[var(--border-primary)] bg-[var(--bg-elevated)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none focus:border-[var(--text-secondary)] transition-colors" />
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-medium tracking-wide text-[var(--text-secondary)] uppercase">Password</label>
+                <label className="mb-1.5 block text-xs font-medium text-[var(--text-secondary)]">Password</label>
                 <div className="relative">
-                  <input type={showPw ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Minimum 6 characters" required minLength={6} className="w-full rounded-xl border border-[var(--border-primary)] bg-[var(--bg-elevated)] px-4 py-3 pr-11 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)]/10" />
-                  <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]">
+                  <input type={showPw ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="At least 6 characters" required minLength={6} className="w-full rounded-lg border border-[var(--border-primary)] bg-[var(--bg-elevated)] px-4 py-2.5 pr-10 text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none focus:border-[var(--text-secondary)] transition-colors" />
+                  <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
                     {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
@@ -143,23 +136,23 @@ export default function LoginView({ onLogin, onRegister, error, isLoading }: Pro
 
               <AnimatePresence>
                 {displayError && (
-                  <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -5 }} className="text-sm text-[var(--critical-text)]">{displayError}</motion.p>
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-sm text-[var(--critical-text)]">{displayError}</motion.p>
                 )}
               </AnimatePresence>
 
-              <motion.button type="submit" disabled={isLoading} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.985 }} className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--accent-primary)] px-5 py-3 text-sm font-medium text-[var(--text-inverse)] hover:bg-[var(--accent-hover)] disabled:cursor-not-allowed disabled:opacity-60">
-                {isLoading ? <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" /> : <>{mode === 'login' ? 'Sign In' : 'Create Account'}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>}
+              <motion.button type="submit" disabled={isLoading} whileTap={{ scale: 0.98 }} className="w-full rounded-lg bg-[var(--accent-primary)] px-5 py-2.5 text-sm font-medium text-[var(--text-inverse)] hover:bg-[var(--accent-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors btn-press">
+                {isLoading ? <div className="mx-auto h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" /> : <span className="flex items-center justify-center gap-2">{mode === 'login' ? 'Sign in' : 'Create account'}<ArrowRight className="h-4 w-4" /></span>}
               </motion.button>
             </form>
 
-            <div className="mt-8 text-center">
-              <button onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setLocalErr(''); }} className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                {mode === 'login' ? <>Don&apos;t have an account? <span className="font-medium text-[var(--text-primary)]">Sign up</span></> : <>Already have an account? <span className="font-medium text-[var(--text-primary)]">Sign in</span></>}
+            <div className="mt-6 text-center">
+              <button onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setLocalErr(''); }} className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                {mode === 'login' ? <>No account? <span className="font-medium">Sign up</span></> : <>Have an account? <span className="font-medium">Sign in</span></>}
               </button>
             </div>
 
-            <div className="mt-10 rounded-xl border border-[var(--border-secondary)] bg-[var(--bg-secondary)] p-4">
-              <p className="text-xs text-[var(--text-tertiary)]"><span className="font-medium text-[var(--text-secondary)]">Demo mode:</span> Create any account to explore with pre-loaded sample data.</p>
+            <div className="mt-8 rounded-lg border border-[var(--border-secondary)] bg-[var(--bg-secondary)] p-3.5">
+              <p className="text-xs text-[var(--text-tertiary)]"><span className="font-medium text-[var(--text-secondary)]">Demo:</span> Create any account to explore with sample data.</p>
             </div>
           </motion.div>
         </AnimatePresence>

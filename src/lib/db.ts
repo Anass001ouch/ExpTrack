@@ -125,3 +125,54 @@ export async function deleteBatch(bid: string): Promise<void> {
   await new Promise((r) => setTimeout(r, 100));
   write(KEYS.batches, read<InventoryBatch>(KEYS.batches).filter((b) => b.id !== bid));
 }
+
+export interface ExportData {
+  version: number;
+  exportedAt: string;
+  user: User | null;
+  products: Product[];
+  batches: InventoryBatch[];
+}
+
+export function exportAllData(userId: string): ExportData {
+  const users = read<User>(KEYS.users);
+  const user = users.find((u) => u.id === userId) || null;
+  return {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    user: user ? { ...user, password: '[REDACTED]' } : null,
+    products: read<Product>(KEYS.products).filter((p) => p.user_id === userId),
+    batches: read<InventoryBatch>(KEYS.batches).filter((b) => {
+      const prods = read<Product>(KEYS.products);
+      return prods.some((p) => p.id === b.product_id && p.user_id === userId);
+    }),
+  };
+}
+
+export async function importAllData(data: ExportData, userId: string): Promise<{ products: number; batches: number }> {
+  await new Promise((r) => setTimeout(r, 100));
+
+  const existingProds = read<Product>(KEYS.products);
+  const existingBatches = read<InventoryBatch>(KEYS.batches);
+
+  // Create mapping for old product IDs to new IDs
+  const productIdMap: Record<string, string> = {};
+
+  const newProducts: Product[] = data.products.map((p) => {
+    const newId = genId();
+    productIdMap[p.id] = newId;
+    return { ...p, id: newId, user_id: userId, created_at: new Date().toISOString() };
+  });
+
+  const newBatches: InventoryBatch[] = data.batches.map((b) => ({
+    ...b,
+    id: genId(),
+    product_id: productIdMap[b.product_id] || b.product_id,
+    created_at: new Date().toISOString(),
+  }));
+
+  write(KEYS.products, [...existingProds, ...newProducts]);
+  write(KEYS.batches, [...existingBatches, ...newBatches]);
+
+  return { products: newProducts.length, batches: newBatches.length };
+}
