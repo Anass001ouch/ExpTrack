@@ -195,8 +195,8 @@ export default function DashboardView({ enrichedBatches, userId, onNavigateToPro
               return (
                 <motion.div key={batch.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.025 * Math.min(i, 10) }} onClick={() => onNavigateToBatches(batch.product_id)} className={`group cursor-pointer rounded-lg border ${c.border} ${c.bg} p-3 hover:shadow-[var(--shadow-sm)] card-hover`}>
                   <div className="flex items-center gap-3">
-                    <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md ${c.bg} border ${c.border}`}>
-                      <span className={`text-[10px] font-semibold ${c.text}`}>{getProductInitials(batch.product.name)}</span>
+                    <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-md ${c.bg} border ${c.border}`}>
+                      {batch.product.image_url ? <img src={batch.product.image_url} alt={batch.product.name} className="h-full w-full object-cover" /> : <span className={`text-[10px] font-semibold ${c.text}`}>{getProductInitials(batch.product.name)}</span>}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-1.5">

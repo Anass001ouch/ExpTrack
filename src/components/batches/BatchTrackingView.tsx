@@ -92,7 +92,7 @@ export default function BatchTrackingView({ product, batches, onAddBatches, onDe
                         <p className={`text-sm font-medium ${c.text}`}>{formatDaysUntil(d)}</p>
                         <p className="mt-0.5 text-xs text-[var(--text-tertiary)]">{formatDate(b.expiration_date)}</p>
                       </div>
-                      <motion.button whileTap={{ scale: 0.9 }} onClick={() => onDeleteBatch(b.id)} className="rounded p-1 text-[var(--text-tertiary)] opacity-0 hover:bg-critical-bg hover:text-critical-text group-hover:opacity-100"><Trash2 className="h-3.5 w-3.5" /></motion.button>
+                      <motion.button whileTap={{ scale: 0.9 }} onClick={() => onDeleteBatch(b.id)} className="rounded p-1 text-[var(--text-tertiary)] hover:bg-critical-bg hover:text-critical-text transition-colors"><Trash2 className="h-4 w-4 sm:h-3.5 sm:w-3.5" /></motion.button>
                     </div>
                   </motion.div>
                 );

@@ -120,7 +120,7 @@ export default function ProductCatalogView({ products, batches, onAddProduct, on
                       </div>
                       {ne && <div className="hidden items-center gap-1 sm:flex">{icon}<span className="text-xs text-[var(--text-secondary)]">{formatDaysUntil(ne.days)}</span></div>}
                       <div className="flex items-center gap-0.5">
-                        <motion.button whileTap={{ scale: 0.9 }} onClick={(e) => { e.stopPropagation(); onDeleteProduct(product.id); }} className="rounded p-1 text-[var(--text-tertiary)] opacity-0 hover:bg-critical-bg hover:text-critical-text group-hover:opacity-100"><Trash2 className="h-3.5 w-3.5" /></motion.button>
+                        <motion.button whileTap={{ scale: 0.9 }} onClick={(e) => { e.stopPropagation(); onDeleteProduct(product.id); }} className="rounded p-1 text-[var(--text-tertiary)] hover:bg-critical-bg hover:text-critical-text transition-colors"><Trash2 className="h-3.5 w-3.5" /></motion.button>
                         <ChevronRight className="h-4 w-4 text-[var(--text-tertiary)] group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </div>
