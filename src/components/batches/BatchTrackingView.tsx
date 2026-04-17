@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Product, InventoryBatch, UrgencyLevel } from '@/lib/types';
 import { formatDate, formatDaysUntil, getProductInitials } from '@/lib/utils';
-import { Plus, X, ChevronLeft, Trash2, Package, Layers, AlertTriangle, Clock, ShieldCheck, Minus, GripVertical, LogOut, Menu } from 'lucide-react';
+import { Plus, X, ChevronLeft, ArrowLeft, Trash2, Package, Layers, AlertTriangle, Clock, ShieldCheck, Minus, GripVertical, LogOut, Menu } from 'lucide-react';
 
 interface Props {
   product: Product;
