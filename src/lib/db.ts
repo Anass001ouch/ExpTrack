@@ -24,34 +24,7 @@ function write<T>(key: string, data: T[]): void {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-function seedDemoData(userId: string): void {
-  const existing = read<Product>(KEYS.products);
-  if (existing.length > 0) return;
-  const now = Date.now();
-  const day = 86400000;
-  const prods: Product[] = [
-    { id: genId(), name: 'Organic Whole Milk', category: 'Dairy', sku: 'DAI-001', image_url: '', user_id: userId, created_at: new Date(now - 30 * day).toISOString() },
-    { id: genId(), name: 'Sourdough Bread', category: 'Bakery', sku: 'BAK-002', image_url: '', user_id: userId, created_at: new Date(now - 25 * day).toISOString() },
-    { id: genId(), name: 'Greek Yogurt', category: 'Dairy', sku: 'DAI-003', image_url: '', user_id: userId, created_at: new Date(now - 20 * day).toISOString() },
-    { id: genId(), name: 'Fresh Salmon Fillet', category: 'Seafood', sku: 'SEA-004', image_url: '', user_id: userId, created_at: new Date(now - 15 * day).toISOString() },
-    { id: genId(), name: 'Baby Spinach', category: 'Produce', sku: 'PRD-005', image_url: '', user_id: userId, created_at: new Date(now - 10 * day).toISOString() },
-    { id: genId(), name: 'Free-Range Eggs', category: 'Dairy', sku: 'DAI-006', image_url: '', user_id: userId, created_at: new Date(now - 8 * day).toISOString() },
-  ];
-  write(KEYS.products, prods);
-  const batches: InventoryBatch[] = [
-    { id: genId(), product_id: prods[0].id, lot_number: 'LOT-MK-001', quantity: 24, expiration_date: new Date(now - 2 * day).toISOString().split('T')[0], created_at: new Date(now - 7 * day).toISOString() },
-    { id: genId(), product_id: prods[1].id, lot_number: 'LOT-BR-003', quantity: 12, expiration_date: new Date(now + 3 * day).toISOString().split('T')[0], created_at: new Date(now - 5 * day).toISOString() },
-    { id: genId(), product_id: prods[3].id, lot_number: 'LOT-SL-001', quantity: 8, expiration_date: new Date(now + 1 * day).toISOString().split('T')[0], created_at: new Date(now - 2 * day).toISOString() },
-    { id: genId(), product_id: prods[0].id, lot_number: 'LOT-MK-002', quantity: 48, expiration_date: new Date(now + 14 * day).toISOString().split('T')[0], created_at: new Date(now - 3 * day).toISOString() },
-    { id: genId(), product_id: prods[2].id, lot_number: 'LOT-YG-001', quantity: 36, expiration_date: new Date(now + 22 * day).toISOString().split('T')[0], created_at: new Date(now - 4 * day).toISOString() },
-    { id: genId(), product_id: prods[4].id, lot_number: 'LOT-SP-002', quantity: 20, expiration_date: new Date(now + 18 * day).toISOString().split('T')[0], created_at: new Date(now - 3 * day).toISOString() },
-    { id: genId(), product_id: prods[5].id, lot_number: 'LOT-EG-001', quantity: 60, expiration_date: new Date(now + 45 * day).toISOString().split('T')[0], created_at: new Date(now - 2 * day).toISOString() },
-    { id: genId(), product_id: prods[1].id, lot_number: 'LOT-BR-004', quantity: 15, expiration_date: new Date(now + 60 * day).toISOString().split('T')[0], created_at: new Date(now - 1 * day).toISOString() },
-    { id: genId(), product_id: prods[3].id, lot_number: 'LOT-SL-002', quantity: 10, expiration_date: new Date(now + 35 * day).toISOString().split('T')[0], created_at: new Date(now - 1 * day).toISOString() },
-    { id: genId(), product_id: prods[2].id, lot_number: 'LOT-YG-002', quantity: 24, expiration_date: new Date(now + 50 * day).toISOString().split('T')[0], created_at: new Date(now).toISOString() },
-  ];
-  write(KEYS.batches, batches);
-}
+
 
 export async function registerUser(email: string, name: string, password: string): Promise<User> {
   await new Promise((r) => setTimeout(r, 300));
@@ -60,7 +33,6 @@ export async function registerUser(email: string, name: string, password: string
   const user: User = { id: genId(), email, name, password, created_at: new Date().toISOString() };
   users.push(user);
   write(KEYS.users, users);
-  seedDemoData(user.id);
   return user;
 }
 
@@ -69,7 +41,6 @@ export async function loginUser(email: string, password: string): Promise<User> 
   const users = read<User>(KEYS.users);
   const user = users.find((u) => u.email === email && u.password === password);
   if (!user) throw new Error('Invalid email or password.');
-  seedDemoData(user.id);
   return user;
 }
 
